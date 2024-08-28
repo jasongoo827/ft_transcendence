@@ -1,0 +1,102 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-image: url('../images/pong.png'); /* 적절한 배경 사진 경로 */
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.container {
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 180px 240px;
+    border-radius: 10px;
+}
+
+.logo-container {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+
+.logo {
+    height: 50px;
+}
+
+header h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+	font-family: 'Montserrat', sans-serif;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.login-form input {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+.login-btn {
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-bottom: 10px;
+	width: 100%;
+}
+
+.login-btn:hover {
+    background-color: #0056b3;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.signUp-btn, .fortyTwoLogin-btn {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+	width: 50%;
+}
+
+.signUp-btn {
+    background-color: #28a745;
+    color: white;
+}
+
+.signUp-btn:hover {
+    background-color: #218838;
+}
+
+.fortyTwoLogin-btn {
+    background-color: #6c757d;
+    color: white;
+}
+
+.fortyTwoLogin-btn:hover {
+    background-color: #5a6268;
+}

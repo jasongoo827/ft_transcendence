@@ -1,0 +1,8 @@
+# postgresql
+
+POSTGRES_PASSWORD=password
+DB_NAME=mydatabase
+DB_USER=mkong
+DB_USER_PASSWORD=password
+DB_HOST=postgres
+DB_PORT=5432

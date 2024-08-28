@@ -1,0 +1,82 @@
+version: '3.8'
+
+services:
+  postgres:
+    build:
+      context: ./requirements/postgresql
+      dockerfile: Dockerfile
+    image: postgres
+    container_name: postgres
+    restart: always
+    init: true
+    env_file: .beenv
+    volumes:
+      - db:/var/lib/postgresql/data
+    # ports:
+    #   - "5432"
+    networks:
+      - intra
+    tty: true
+
+  django:
+    build:
+      context: ./requirements/django
+      dockerfile: Dockerfile
+    image: django
+    container_name: django
+    restart: always
+    init: true
+    env_file: .beenv
+    depends_on:
+      - postgres
+    volumes:
+      - django:/volumes
+    # ports:
+    #   - "8000:8000"
+    networks:
+      - intra
+    tty: true
+
+  nginx:
+    build:
+      context: ./requirements/nginx
+      dockerfile: Dockerfile
+    image: nginx
+    container_name: nginx
+    restart: always
+    init: true
+    env_file: .beenv
+    depends_on:
+      - postgres
+      - django
+    # volumes:
+    #   - nginx:/volumes
+    ports:
+      - "443:443"
+    networks:
+      - intra
+    tty: true
+
+volumes:
+  db:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: '/Users/mkong/trans_prac/res/requirements/postgresql/volumes'
+  django:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: '/Users/mkong/trans_prac/res/requirements/django/volumes'
+  # ngnix:
+  #   driver: local
+  #   driver_opts:
+  #     type: none
+  #     o: bind
+  #     device: '/Users/mkong/trans_prac/res/requirements/ngnix/volumes'
+
+networks:
+  intra:
+    driver: bridge
